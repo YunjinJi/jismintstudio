@@ -70,28 +70,24 @@
         .app-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
-        /* 스토어 버튼 스타일 */
-        .store-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .btn-store {
-            padding: 12px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        /* 스토어 배지 스타일 */
+        .store-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .store-badge {
+            height: 48px; /* 배지 높이 통일 */
+            width: auto;
             transition: 0.3s;
-            background-color: #333;
-            color: #888;
-            cursor: not-allowed; /* 비활성화 표시 */
-            border: 1px solid #444;
+            /* 준비중 상태: 흑백 및 반투명 처리 */
+            filter: grayscale(100%);
+            opacity: 0.3;
+            cursor: not-allowed;
         }
-        .btn-store.active {
-            background-color: #fff;
-            color: #000;
+        /* 나중에 출시되면 이 아래 주석을 풀고 filter와 opacity를 제거하세요
+        .store-badge.active {
+            filter: none;
+            opacity: 1;
             cursor: pointer;
         }
+        */
 
         footer {
             background-color: var(--footer-bg);
@@ -101,7 +97,6 @@
         }
 
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
-        .footer-info { max-width: 60%; }
         .footer-info p { margin: 0.3rem 0; opacity: 0.7; }
         
         .footer-links a {
@@ -128,9 +123,11 @@
             <p class="app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
             
             <div class="store-buttons">
-                <a href="#" class="btn-store">App Store <span style="font-size: 0.7rem;">(준비중)</span></a>
-                <a href="#" class="btn-store">Google Play <span style="font-size: 0.7rem;">(준비중)</span></a>
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83&amp;releaseDate=1623916800&h=c4a4f8d4e9a48d94e22e4d3a223f0e20" alt="Download on the App Store" class="store-badge">
+                
+                <img src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Get it on Google Play" class="store-badge">
             </div>
+            <p style="font-size: 0.8rem; color: #555; margin-top: 10px;">(앱 스토어 출시 준비 중)</p>
         </div>
     </main>
 
@@ -143,7 +140,6 @@
                 <p>주소: 경기도 성남시 분당구 불정로 219 (정자동)</p>
             </div>
             <div class="footer-links">
-                <!-- 노션 링크 연결 -->
                 <a href="https://libi-fortune.notion.site/LIBI-Privacy-Policy-30d74b7c91b180b991b2fba242f02905" target="_blank">개인정보처리방침</a>
                 <a href="https://libi-fortune.notion.site/LIBI-Terms-of-Service-31974b7c91b18049b713c33c76a41562" target="_blank">이용약관</a>
                 <a href="mailto:admin@jismintstudio.com">문의하기</a>
