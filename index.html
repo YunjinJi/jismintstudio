@@ -91,9 +91,31 @@
         .app-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
-        .store-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
-        .store-badge { height: 45px; width: auto; transition: 0.3s; vertical-align: middle; }
-        img[alt="Google Play"] { height: 58px; margin-left: -5px; }
+        .store-buttons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .badge-wrapper {
+            width: 160px;  /* 모든 언어 배지가 들어갈 충분한 너비 */
+            height: 50px;  /* 모든 언어 배지가 들어갈 고정 높이 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .store-badge { 
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* 비율 깨지지 않게 방 안으로 쏙 넣기 */
+            display: block;
+        }
+        #badge-google {
+            transform: scale(1.3); /* 구글은 여백이 많으니 억지로 좀 더 키웁니다 */
+        }
 
         footer {
             background-color: var(--footer-bg);
@@ -143,9 +165,13 @@
             <p class="app-desc" id="t-app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
             
             <div class="store-buttons">
-                <img id="badge-apple" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
-                <img id="badge-google" src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
-            </div>
+                <div class="badge-wrapper">
+                    <img id="badge-apple" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
+                </div>
+                <div class="badge-wrapper">
+                    <img id="badge-google" src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
+                </div>
+                </div>
             <p id="t-status" style="font-size: 0.8rem; color: #666; margin-top: 15px;">(스토어 출시 준비 중)</p>
         </div>
     </main>
@@ -219,7 +245,7 @@
                 terms: "服务条款",
                 contact: "联系我们",
                 apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/zh-cn?size=250x83",
-                google: google: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                google: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
             },
             tw: {
                 subtitle: "Jismint Studio 通過人工智慧技術創造全新價值。",
