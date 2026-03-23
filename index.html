@@ -91,7 +91,6 @@
         .app-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
-        /* 💡 영문 배지에 최적화된 완벽한 밸런스 CSS */
         .store-buttons { 
             display: flex; 
             justify-content: center; 
@@ -105,15 +104,8 @@
             width: auto;
         }
 
-        /* 애플 영문 배지: 군더더기 없이 깔끔함 */
-        #badge-apple {
-            height: 48px; 
-        }
-
-        /* 구글 영문 배지: 상하 투명 여백이 있어서 height를 더 크게 줘야 밸런스가 맞음 */
-        #badge-google {
-            height: 70px; 
-        }
+        #badge-apple { height: 48px; }
+        #badge-google { height: 70px; }
         
         footer {
             background-color: var(--footer-bg);
@@ -122,18 +114,41 @@
             border-top: 1px solid #333;
         }
 
-        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+        /* PC 버전: 양옆으로 분산 배치 */
+        .footer-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start;
+            flex-wrap: wrap; 
+            gap: 2rem; 
+        }
+
         .footer-info p { margin: 0.3rem 0; opacity: 0.7; }
         .footer-links { display: flex; gap: 1.5rem; }
         .footer-links a { color: var(--text-color); text-decoration: none; opacity: 0.7; transition: 0.3s; }
         .footer-links a:hover { opacity: 1; color: var(--accent-color); }
         .copyright { width: 100%; text-align: center; margin-top: 2rem; opacity: 0.5; }
 
+        /* 📱 모바일 버전: 중앙 정렬 강제 보정 */
         @media (max-width: 768px) {
+            header { justify-content: center; text-align: center; padding: 2rem 5%; }
+            main { padding: 3rem 5%; }
             .studio-title { font-size: 2.5rem; }
-            .app-section { padding: 2rem; }
+            .app-section { padding: 2.5rem 1.5rem; }
             .app-logo { width: 140px; height: 140px; }
-            header { justify-content: center; text-align: center; }
+            
+            /* 푸터 전체를 수직 중앙 정렬 */
+            .footer-content { 
+                flex-direction: column; 
+                align-items: center; 
+                text-align: center; 
+            }
+            .footer-links { 
+                justify-content: center; 
+                width: 100%;
+                flex-wrap: wrap; /* 링크가 길어지면 줄바꿈 되도록 */
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -180,8 +195,8 @@
                 <p id="t-footer-addr">주소: 경기도 성남시 분당구 불정로 219, 지스민트 스튜디오</p>
             </div>
             <div class="footer-links">
-                <a href="https://libi-fortune.notion.site/LIBI-Privacy-Policy-30d74b7c91b180b991b2fba242f02905" target="_blank" id="t-link-privacy">개인정보처리방침</a>
-                <a href="https://libi-fortune.notion.site/LIBI-Terms-of-Service-31974b7c91b18049b713c33c76a41562" target="_blank" id="t-link-terms">이용약관</a>
+                <a href="https://libi-fortune.notion.site/LIBI-Privacy-Policy-30d74b7c91b180b991b2fba242f02905" target="_blank" id="t-link-privacy">LIBI 개인정보처리방침</a>
+                <a href="https://libi-fortune.notion.site/LIBI-Terms-of-Service-31974b7c91b18049b713c33c76a41562" target="_blank" id="t-link-terms">LIBI 이용약관</a>
                 <a href="mailto:talk2you.official@gmail.com" id="t-link-contact">문의하기</a>
             </div>
         </div>
@@ -197,8 +212,8 @@
                 ceo: "대표: 지윤진 | 사업자등록번호: 168-61-00933",
                 mail: "통신판매업신고: 제 2026-성남분당B-0303 호",
                 addr: "주소: 경기도 성남시 분당구 불정로 219, 지스민트 스튜디오",
-                privacy: "개인정보처리방침",
-                terms: "이용약관",
+                privacy: "LIBI 개인정보처리방침",
+                terms: "LIBI 이용약관",
                 contact: "문의하기"
             },
             en: {
@@ -208,30 +223,30 @@
                 ceo: "CEO: Yunjin Ji | Biz License: 168-61-00933",
                 mail: "E-commerce License: No. 2026-SeongnamBundangB-0303",
                 addr: "Address: 219, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Korea",
-                privacy: "Privacy Policy",
-                terms: "Terms of Service",
+                privacy: "LIBI Privacy Policy",
+                terms: "LIBI Terms of Service",
                 contact: "Contact"
             },
             jp: {
-                subtitle: "Jismint Studioは人工知能技術を通じて新しい価値を創出します。",
+                subtitle: "Jismint Studioは人工知能技術を通じて新しい価値を創出합니다.",
                 appDesc: "四柱推命とAIの出会い、あなたの運命を新しく解釈するAI占いサービス。",
                 status: "(ストアリリース準備中)",
                 ceo: "代表: 池允辰 | 事業者登録番号: 168-61-00933",
                 mail: "通信販売業申告: 第 2026-SeongnamBundangB-0303 号",
                 addr: "住所: 219, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Korea",
-                privacy: "プライバシーポリシー",
-                terms: "利用規約",
+                privacy: "LIBI プライバシーポリシー",
+                terms: "LIBI 利用規約",
                 contact: "お問い合わせ"
             },
             cn: {
                 subtitle: "Jismint Studio 通过人工智能技术创造全新价值。",
-                appDesc: "命理与 AI 的结合，重新诠释您命运的人工智能占卜服务。",
+                appDesc: "命理与 AI 的结合，重新诠释您命运的人공智能占卜服务。",
                 status: "(即将全球发布)",
                 ceo: "代表: 池允辰 | 营业执照: 168-61-00933",
                 mail: "电商许可证: 第 2026-SeongnamBundangB-0303 号",
                 addr: "地址: 韩国京畿道城南市盆唐区佛亭路 219",
-                privacy: "隐私政策",
-                terms: "服务条款",
+                privacy: "LIBI 隐私政策",
+                terms: "LIBI 服务条款",
                 contact: "联系我们"
             },
             tw: {
@@ -241,8 +256,8 @@
                 ceo: "代表: 池允辰 | 營業執照: 168-61-00933",
                 mail: "電商許可證: 第 2026-SeongnamBundangB-0303 號",
                 addr: "地址: 韓國京畿道城南市盆唐區佛亭路 219",
-                privacy: "隱私政策",
-                terms: "服務條款",
+                privacy: "LIBI 隱私政策",
+                terms: "LIBI 服務條款",
                 contact: "聯繫我們"
             }
         };
