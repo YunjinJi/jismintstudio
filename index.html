@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jismint Studio | 지스민트 스튜디오</title>
-    <link rel="icon" href="logo.png" type="image/png">
+    <!-- 브라우저 탭 아이콘을 스튜디오 로고로 변경 -->
+    <link rel="icon" href="js_master_logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #121212;
             --text-color: #e0e0e0;
-            --accent-color: #00897B;
-            --point-color: #FF8A80;
+            --accent-color: #00897B; /* 에메랄드 그린 */
+            --point-color: #FF8A80;  /* 웜 코랄 */
             --footer-bg: #1f1f1f;
         }
 
@@ -26,12 +27,19 @@
             line-height: 1.6;
         }
 
-       <header>
-        <a href="https://jismintstudio.com" class="logo-link">
-            <img src="js_master_logo.svg" alt="Jismint Studio Symbol" class="studio-logo-svg">
-            <span class="logo-text">Jismint Studio</span>
-        </a>
-      </header>
+        header { padding: 2rem 10%; }
+
+        /* 상단 스튜디오 로고 스타일 */
+        .logo-link { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            text-decoration: none; 
+            transition: 0.3s;
+        }
+        .logo-link:hover { opacity: 0.8; }
+        .studio-logo-svg { height: 35px; width: auto; }
+        .logo-text { font-size: 1.5rem; font-weight: 800; color: #fff; }
 
         main {
             flex: 1;
@@ -42,17 +50,6 @@
             align-items: center;
             text-align: center;
         }
-
-        .logo-link { 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            text-decoration: none; 
-            transition: 0.3s;
-        }
-        .logo-link:hover { opacity: 0.8; }
-        .studio-logo-svg { height: 35px; width: auto; fill: var(--accent-color); }
-        .logo-text { font-size: 1.5rem; font-weight: 800; color: #fff; }
         
         .studio-title {
             font-size: 3.5rem;
@@ -74,13 +71,15 @@
             width: 100%;
         }
 
+        /* 중앙 리비 앱 로고 스타일 */
         .app-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 24px;
+            width: 130px;
+            height: 130px;
+            border-radius: 28px;
             display: block;
             margin: 0 auto 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            /* 배경 없는 PNG를 위한 부드러운 그림자 */
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
         }
 
         .app-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
@@ -95,7 +94,7 @@
         }
 
         .store-badge {
-            height: 40px; /* 애플 기준 높이 */
+            height: 40px;
             width: auto;
             transition: 0.3s;
             filter: grayscale(100%);
@@ -103,7 +102,6 @@
             cursor: not-allowed;
             vertical-align: middle;
         }
-
 
         img[alt="Google Play"] {
             height: 52px;
@@ -134,7 +132,11 @@
 <body>
 
     <header>
-    <a href="https://jismintstudio.com" class="logo">Jismint Studio</a>
+        <a href="https://jismintstudio.com" class="logo-link">
+            <!-- 1. 스튜디오 로고 (SVG 파일 사용) -->
+            <img src="js_master_logo.svg" alt="Jismint Studio Symbol" class="studio-logo-svg">
+            <span class="logo-text">Jismint Studio</span>
+        </a>
     </header>
 
     <main>
@@ -142,7 +144,8 @@
         <p class="studio-subtitle">지스민트 스튜디오는 인공지능 기술을 통해 새로운 가치를 창출합니다.</p>
         
         <div class="app-section">
-            <img src="logo.png" alt="Libi Logo" class="app-logo">
+            <!-- 2. 리비 앱 로고 (PNG 파일 사용) -->
+            <img src="libi_logo.png" alt="Libi App Logo" class="app-logo">
             <h2 class="app-name">리비 (LIBI)</h2>
             <p class="app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
             
