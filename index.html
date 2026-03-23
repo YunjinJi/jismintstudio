@@ -91,38 +91,47 @@
         .app-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
-        /* 1. 컨테이너: 사이 간격을 넓혀서 여유를 줍니다 */
-        .store-buttons { 
+       .store-buttons { 
             display: flex; 
             justify-content: center; 
-            gap: 20px; 
-            margin-top: 3rem; /* 위쪽 여백을 더 주어 강조 */
+            gap: 15px; 
+            margin-top: 2.5rem;
             align-items: center;
         }
 
-        /* 2. 상자 크기 대폭 확대: 배지가 기를 펼 수 있게! */
         .badge-wrapper {
-            width: 180px;  /* 기존보다 늘려서 배지를 크게 키움 */
-            height: 60px;  
+            width: 160px;
+            height: 50px;  
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* 3. 이미지 공통 */
         .store-badge { 
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
             display: block;
-        }        
-        #badge-apple {
-            transform: scale(1.3); /* 1.1에서 1.15로 살짝 업 */
+            transition: transform 0.2s ease-in-out;
         }
 
-        #badge-google {
-            transform: scale(1.3) translateY(2px); /* 스케일 살짝 줄이고, 아래로 2px 이동 */
-            padding: 0;
+        /* 애플 배지는 모든 언어 규격이 비슷하므로 고정 */
+        #badge-apple {
+            transform: scale(1.1);
+        }
+
+        /* 💡 언어별 구글 배지 스케일 자동 조절 */
+        /* 한국어, 일본어 (여백이 많은 이미지 -> 크게 뻥튀기) */
+        body.lang-ko #badge-google, 
+        body.lang-jp #badge-google {
+            transform: scale(1.45) translateY(2px);
+        }
+
+        /* 영어, 중국어 (여백이 없는 꽉 찬 이미지 -> 살짝만 조절) */
+        body.lang-en #badge-google, 
+        body.lang-cn #badge-google, 
+        body.lang-tw #badge-google {
+            transform: scale(1.05);
         }
         
         footer {
@@ -147,7 +156,7 @@
         }
     </style>
 </head>
-<body>
+<body class="lang-ko">
 
     <header>
         <a href="https://jismintstudio.com" class="logo-link">
@@ -230,7 +239,7 @@
                 google: "https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
             },
             jp: {
-                subtitle: "Jismint Studioは人工知能技術を通じて新しい価値を創出합니다.",
+                subtitle: "Jismint Studioは人工知能技術を通じて新しい価値を創出します。",
                 appDesc: "四柱推命とAIの出会い、あなたの運命を新しく解釈するAI占いサービス。",
                 status: "(ストアリリース準備中)",
                 ceo: "代表: 池允辰 | 事業者登録番号: 168-61-00933",
@@ -293,6 +302,9 @@
             // HTML lang 속성 업데이트
             const langMap = { ko: 'ko', en: 'en', jp: 'ja', cn: 'zh-Hans', tw: 'zh-Hant' };
             document.documentElement.lang = langMap[lang];
+
+            // 💡 핵심 추가: 현재 언어를 body 클래스에 달아주어 CSS가 인식하게 함
+            document.body.className = 'lang-' + lang; 
         }
     </script>
 </body>
