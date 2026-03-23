@@ -91,47 +91,19 @@
         .app-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
+       /* 💡 모든 꼼수를 제거하고 아주 깔끔하게 정리한 배지 영역 */
        .store-buttons { 
             display: flex; 
             justify-content: center; 
-            gap: 15px; 
+            gap: 12px; /* 배지 사이 간격 */
             margin-top: 2.5rem;
             align-items: center;
         }
 
-        .badge-wrapper {
-            width: 160px;
-            height: 50px;  
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .store-badge { 
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+            height: 48px; /* 애플과 구글 모두 동일한 높이로 강제 고정 */
+            width: auto;
             display: block;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        /* 애플 배지는 모든 언어 규격이 비슷하므로 고정 */
-        #badge-apple {
-            transform: scale(1.1);
-        }
-
-        /* 💡 언어별 구글 배지 스케일 자동 조절 */
-        /* 한국어, 일본어 (여백이 많은 이미지 -> 크게 뻥튀기) */
-        body.lang-ko #badge-google, 
-        body.lang-jp #badge-google {
-            transform: scale(1.45) translateY(2px);
-        }
-
-        /* 영어, 중국어 (여백이 없는 꽉 찬 이미지 -> 살짝만 조절) */
-        body.lang-en #badge-google, 
-        body.lang-cn #badge-google, 
-        body.lang-tw #badge-google {
-            transform: scale(1.05);
         }
         
         footer {
@@ -182,13 +154,10 @@
             <p class="app-desc" id="t-app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
             
             <div class="store-buttons">
-                <div class="badge-wrapper">
-                    <img id="badge-apple" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
-                </div>
-                <div class="badge-wrapper">
-                    <img id="badge-google" src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
-                </div>
-                </div>
+                <img id="badge-apple" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
+                <img id="badge-google" src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
+            </div>
+            
             <p id="t-status" style="font-size: 0.8rem; color: #666; margin-top: 15px;">(스토어 출시 준비 중)</p>
         </div>
     </main>
@@ -262,7 +231,7 @@
                 terms: "服务条款",
                 contact: "联系我们",
                 apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/zh-cn?size=250x83",
-                google: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                google: "https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
             },
             tw: {
                 subtitle: "Jismint Studio 通過人工智慧技術創造全新價值。",
@@ -275,7 +244,7 @@
                 terms: "服務條款",
                 contact: "聯繫我們",
                 apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/zh-tw?size=250x83",
-                google: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                google: "https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
             }
         };
 
@@ -302,8 +271,8 @@
             // HTML lang 속성 업데이트
             const langMap = { ko: 'ko', en: 'en', jp: 'ja', cn: 'zh-Hans', tw: 'zh-Hant' };
             document.documentElement.lang = langMap[lang];
-
-            // 💡 핵심 추가: 현재 언어를 body 클래스에 달아주어 CSS가 인식하게 함
+            
+            // CSS 조작용 클래스 부여 (혹시 나중에 필요할까 봐 남겨둡니다)
             document.body.className = 'lang-' + lang; 
         }
     </script>
