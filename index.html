@@ -7,11 +7,10 @@
     <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* 기본 스타일 설정 */
         :root {
-            --bg-color: #121212; /* 고급스러운 다크 그레이 */
+            --bg-color: #121212;
             --text-color: #e0e0e0;
-            --accent-color: #bb86fc; /* 연한 보라색 포인트 */
+            --accent-color: #bb86fc;
             --footer-bg: #1f1f1f;
         }
 
@@ -26,23 +25,9 @@
             line-height: 1.6;
         }
 
-        /* 헤더 (로고 영역) */
-        header {
-            padding: 2rem 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        header { padding: 2rem 10%; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--accent-color); text-decoration: none; }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            text-decoration: none;
-            letter-spacing: -1px;
-        }
-
-        /* 메인 섹션 */
         main {
             flex: 1;
             padding: 4rem 10%;
@@ -57,51 +42,57 @@
             font-size: 3.5rem;
             font-weight: 800;
             margin-bottom: 0.5rem;
-            letter-spacing: -2px;
             background: linear-gradient(to right, #fff, var(--accent-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .studio-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 3rem;
-            opacity: 0.8;
-        }
+        .studio-subtitle { font-size: 1.2rem; font-weight: 300; margin-bottom: 3rem; opacity: 0.8; }
 
-        /* 리비(Libi) 앱 소개 섹션 */
         .app-section {
             background-color: #1f1f1f;
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 800px;
+            max-width: 600px;
             width: 100%;
         }
 
-       .app-logo {
-            width: 100px; /* 로고 크기 조정 */
-            height: auto;
-            border-radius: 20px; /* 로고 모서리 둥글게 */
+        .app-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
             display: block;
-            margin: 0 auto 1.5rem; /* 중앙 정렬 및 여백 */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* 로고에 살짝 그림자 추가 */
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .app-name {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        .app-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
+
+        /* 스토어 버튼 스타일 */
+        .store-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .btn-store {
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            background-color: #333;
+            color: #888;
+            cursor: not-allowed; /* 비활성화 표시 */
+            border: 1px solid #444;
+        }
+        .btn-store.active {
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
         }
 
-        .app-desc {
-            font-size: 1rem;
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        /* 푸터 (사업자 정보 영역) */
         footer {
             background-color: var(--footer-bg);
             padding: 3rem 10%;
@@ -109,48 +100,23 @@
             border-top: 1px solid #333;
         }
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .footer-info {
-            max-width: 60%;
-        }
-
-        .footer-info p {
-            margin: 0.3rem 0;
-            opacity: 0.7;
-        }
-
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+        .footer-info { max-width: 60%; }
+        .footer-info p { margin: 0.3rem 0; opacity: 0.7; }
+        
         .footer-links a {
             color: var(--text-color);
             text-decoration: none;
             opacity: 0.7;
-            margin-left: 1rem;
+            margin-left: 1.5rem;
         }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--accent-color);
-        }
-
-        .copyright {
-            width: 100%;
-            text-align: center;
-            margin-top: 2rem;
-            opacity: 0.5;
-            font-size: 0.8rem;
-        }
+        .footer-links a:hover { opacity: 1; color: var(--accent-color); }
+        .copyright { width: 100%; text-align: center; margin-top: 2rem; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo">Jismint Studio</a>
-    </header>
+    <header><a href="#" class="logo">Jismint Studio</a></header>
 
     <main>
         <h1 class="studio-title">Innovating with AI</h1>
@@ -160,6 +126,11 @@
             <img src="logo.png" alt="Libi Logo" class="app-logo">
             <h2 class="app-name">리비 (Libi)</h2>
             <p class="app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
+            
+            <div class="store-buttons">
+                <a href="#" class="btn-store">App Store <span style="font-size: 0.7rem;">(준비중)</span></a>
+                <a href="#" class="btn-store">Google Play <span style="font-size: 0.7rem;">(준비중)</span></a>
+            </div>
         </div>
     </main>
 
@@ -169,16 +140,16 @@
                 <strong>지스민트 스튜디오 (Jismint Studio)</strong>
                 <p>대표: 지윤진 | 사업자등록번호: 168-61-00933</p>
                 <p>통신판매업신고: 제 20260318 호 (성남시청)</p>
-            
+                <p>주소: 경기도 성남시 분당구 불정로 219 (정자동)</p>
             </div>
             <div class="footer-links">
-                <a href="#">개인정보처리방침</a>
+                <!-- 노션 링크 연결 -->
+                <a href="https://libi-fortune.notion.site/LIBI-Privacy-Policy-30d74b7c91b180b991b2fba242f02905" target="_blank">개인정보처리방침</a>
+                <a href="https://libi-fortune.notion.site/LIBI-Terms-of-Service-31974b7c91b18049b713c33c76a41562" target="_blank">이용약관</a>
                 <a href="mailto:admin@jismintstudio.com">문의하기</a>
             </div>
         </div>
-        <div class="copyright">
-            &copy; 2026 Jismint Studio. All rights reserved.
-        </div>
+        <div class="copyright">&copy; 2026 Jismint Studio. All rights reserved.</div>
     </footer>
 
 </body>
