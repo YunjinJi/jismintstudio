@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jismint Studio | 지스민트 스튜디오</title>
     <link rel="icon" href="js_master_logo.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&family=Noto+Sans+KR:wght@300;500;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #121212;
@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: 'Poppins', 'Noto Sans KR', sans-serif;
+            font-family: 'Poppins', 'Noto Sans KR', 'Noto Sans JP', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -37,7 +37,7 @@
         .logo-link { 
             display: flex; 
             align-items: center; 
-            gap: 5px; /* 로고와 글자 간격 */
+            gap: 5px; 
             text-decoration: none; 
             transition: 0.3s;
         }
@@ -45,8 +45,8 @@
         .studio-logo-svg { height: 50px; width: auto; }
         .logo-text { font-size: 1.5rem; font-weight: 800; color: #fff; }
 
-        .lang-switch { font-size: 0.85rem; color: #fff; display: flex; gap: 8px; opacity: 0.8; }
-        .lang-btn { cursor: pointer; transition: 0.3s; opacity: 0.5; }
+        .lang-switch { font-size: 0.8rem; color: #fff; display: flex; gap: 6px; opacity: 0.8; }
+        .lang-btn { cursor: pointer; transition: 0.3s; opacity: 0.5; padding: 0 2px; }
         .lang-btn.active { opacity: 1; font-weight: 700; color: var(--accent-color); }
 
         main {
@@ -92,7 +92,7 @@
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
         .store-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
-        .store-badge { height: 45px; width: auto; opacity: 0.3; filter: grayscale(100%); cursor: not-allowed; }
+        .store-badge { height: 45px; width: auto; transition: 0.3s; vertical-align: middle; }
         img[alt="Google Play"] { height: 58px; margin-left: -5px; }
 
         footer {
@@ -127,6 +127,7 @@
         <div class="lang-switch">
             <span id="lang-ko" class="lang-btn active" onclick="changeLang('ko')">KO</span> | 
             <span id="lang-en" class="lang-btn" onclick="changeLang('en')">EN</span> | 
+            <span id="lang-jp" class="lang-btn" onclick="changeLang('jp')">JP</span> | 
             <span id="lang-cn" class="lang-btn" onclick="changeLang('cn')">简</span> | 
             <span id="lang-tw" class="lang-btn" onclick="changeLang('tw')">繁</span>
         </div>
@@ -142,8 +143,8 @@
             <p class="app-desc" id="t-app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
             
             <div class="store-buttons">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
-                <img src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
+                <img id="badge-apple" src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
+                <img id="badge-google" src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
             </div>
             <p id="t-status" style="font-size: 0.8rem; color: #666; margin-top: 15px;">(스토어 출시 준비 중)</p>
         </div>
@@ -177,7 +178,9 @@
                 addr: "주소: 경기도 성남시 분당구 불정로 219, 지스민트 스튜디오",
                 privacy: "개인정보처리방침",
                 terms: "이용약관",
-                contact: "문의하기"
+                contact: "문의하기",
+                apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83",
+                google: "https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png"
             },
             en: {
                 subtitle: "Innovating the future through Artificial Intelligence technology.",
@@ -188,9 +191,24 @@
                 addr: "Address: 219, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Korea",
                 privacy: "Privacy Policy",
                 terms: "Terms of Service",
-                contact: "Contact"
+                contact: "Contact",
+                apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83",
+                google: "https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png"
             },
-            cn: { // 간체 (중국 본토 등)
+            jp: {
+                subtitle: "Jismint Studioは人工知能技術を通じて新しい価値を創出합니다.",
+                appDesc: "四柱推命とAIの出会い、あなたの運命を新しく解釈するAI占いサービス。",
+                status: "(ストアリリース準備中)",
+                ceo: "代表: 池允辰 | 事業者登録番号: 168-61-00933",
+                mail: "通信販売業申告: 第 2026-SeongnamBundangB-0303 号",
+                addr: "住所: 219, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, Korea",
+                privacy: "プライバシーポリシー",
+                terms: "利用規約",
+                contact: "お問い合わせ",
+                apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ja-jp?size=250x83",
+                google: "https://play.google.com/intl/en_us/badges/images/generic/ja_badge_web_generic.png"
+            },
+            cn: {
                 subtitle: "Jismint Studio 通过人工智能技术创造全新价值。",
                 appDesc: "命理与 AI 的结合，重新诠释您命运的人工智能占卜服务。",
                 status: "(即将全球发布)",
@@ -199,9 +217,11 @@
                 addr: "地址: 韩国京畿道城南市盆唐区佛亭路 219",
                 privacy: "隐私政策",
                 terms: "服务条款",
-                contact: "联系我们"
+                contact: "联系我们",
+                apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/zh-cn?size=250x83",
+                google: "https://play.google.com/intl/en_us/badges/images/generic/zh_cn_badge_web_generic.png"
             },
-            tw: { // 번체 (대만, 홍콩 등)
+            tw: {
                 subtitle: "Jismint Studio 通過人工智慧技術創造全新價值。",
                 appDesc: "命理與 AI 的結合，重新詮釋您命運的人工智慧占卜服務。",
                 status: "(即將全球發布)",
@@ -210,11 +230,14 @@
                 addr: "地址: 韓國京畿道城南市盆唐區佛亭路 219",
                 privacy: "隱私政策",
                 terms: "服務條款",
-                contact: "聯繫我們"
+                contact: "聯繫我們",
+                apple: "https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/zh-tw?size=250x83",
+                google: "https://play.google.com/intl/en_us/badges/images/generic/zh_tw_badge_web_generic.png"
             }
         };
 
         function changeLang(lang) {
+            // 텍스트 변경
             document.getElementById('t-studio-subtitle').innerText = content[lang].subtitle;
             document.getElementById('t-app-desc').innerText = content[lang].appDesc;
             document.getElementById('t-status').innerText = content[lang].status;
@@ -225,10 +248,17 @@
             document.getElementById('t-link-terms').innerText = content[lang].terms;
             document.getElementById('t-link-contact').innerText = content[lang].contact;
 
+            // 스토어 배지 이미지 변경
+            document.getElementById('badge-apple').src = content[lang].apple;
+            document.getElementById('badge-google').src = content[lang].google;
+
+            // 버튼 스타일 활성화
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById('lang-' + lang).classList.add('active');
             
-            document.documentElement.lang = (lang === 'cn' ? 'zh-Hans' : (lang === 'tw' ? 'zh-Hant' : lang));
+            // HTML lang 속성 업데이트
+            const langMap = { ko: 'ko', en: 'en', jp: 'ja', cn: 'zh-Hans', tw: 'zh-Hant' };
+            document.documentElement.lang = langMap[lang];
         }
     </script>
 </body>
