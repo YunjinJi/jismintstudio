@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jismint Studio | 지스민트 스튜디오</title>
-    <link rel="icon" href="js_master_logo.png" type="image/png">
+    <title>Jismint Studio | Innovating with AI</title>
+    <link rel="icon" href="logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #121212;
             --text-color: #e0e0e0;
-            --accent-color: #00897B; /* 에메랄드 그린 */
-            --point-color: #FF8A80;  /* 웜 코랄 */
+            --accent-color: #00897B; /* 미스틱 민트 */
             --footer-bg: #1f1f1f;
         }
 
@@ -26,19 +24,33 @@
             line-height: 1.6;
         }
 
-        header { padding: 2rem 10%; }
+        /* 헤더 스타일: 로고와 언어 전환 버튼 정렬 */
+        header { 
+            padding: 2rem 10%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
 
-        /* 상단 스튜디오 로고 스타일 */
         .logo-link { 
             display: flex; 
             align-items: center; 
-            gap: 5px; 
+            gap: 5px; /* 로고와 글자 사이 간격 (더 붙이려면 숫자를 줄이세요) */
             text-decoration: none; 
             transition: 0.3s;
         }
-        .logo-link:hover { opacity: 0.8; }
-        .studio-logo-svg { height: 50px; width: auto; }
+        
+        .studio-logo-svg { 
+            height: 50px; /* 로고 크기 조절 포인트 */
+            width: auto; 
+        }
+        
         .logo-text { font-size: 1.5rem; font-weight: 800; color: #fff; }
+
+        /* 언어 전환 버튼 스타일 */
+        .lang-switch { font-size: 0.9rem; color: #fff; }
+        .lang-btn { cursor: pointer; transition: 0.3s; opacity: 0.5; padding: 0 5px; }
+        .lang-btn.active { opacity: 1; font-weight: 700; color: var(--accent-color); }
 
         main {
             flex: 1;
@@ -49,7 +61,7 @@
             align-items: center;
             text-align: center;
         }
-        
+
         .studio-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -63,49 +75,29 @@
 
         .app-section {
             background-color: #1f1f1f;
-            padding: 3rem;
-            border-radius: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 600px;
+            padding: 3.5rem;
+            border-radius: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            max-width: 650px;
             width: 100%;
         }
 
-        /* 중앙 리비 앱 로고 스타일 */
+        /* 앱 로고 크기 조절 포인트 */
         .app-logo {
-            width: 130px;
-            height: 130px;
-            border-radius: 28px;
+            width: 180px; 
+            height: 180px;
+            border-radius: 36px;
             display: block;
             margin: 0 auto 1.5rem;
-            /* 배경 없는 PNG를 위한 부드러운 그림자 */
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
         }
 
-        .app-name { font-size: 2.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .app-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
-        .store-buttons { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            flex-wrap: wrap; 
-            align-items: center;
-        }
-
-        .store-badge {
-            height: 40px;
-            width: auto;
-            transition: 0.3s;
-            filter: grayscale(100%);
-            opacity: 0.3;
-            cursor: not-allowed;
-            vertical-align: middle;
-        }
-
-        img[alt="Google Play"] {
-            height: 52px;
-            margin-left: -5px;
-        }
+        .store-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
+        .store-badge { height: 45px; width: auto; opacity: 0.3; filter: grayscale(100%); cursor: not-allowed; }
+        img[alt="Google Play"] { height: 58px; margin-left: -5px; }
 
         footer {
             background-color: var(--footer-bg);
@@ -116,62 +108,112 @@
 
         .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
         .footer-info p { margin: 0.3rem 0; opacity: 0.7; }
-        
         .footer-links { display: flex; gap: 1.5rem; }
-        .footer-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            opacity: 0.7;
-            transition: 0.3s;
-        }
+        .footer-links a { color: var(--text-color); text-decoration: none; opacity: 0.7; transition: 0.3s; }
         .footer-links a:hover { opacity: 1; color: var(--accent-color); }
         .copyright { width: 100%; text-align: center; margin-top: 2rem; opacity: 0.5; }
+
+        @media (max-width: 768px) {
+            .studio-title { font-size: 2.5rem; }
+            .app-section { padding: 2rem; }
+            .app-logo { width: 140px; height: 140px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <a href="https://jismintstudio.com" class="logo-link">
-            <!-- 1. 스튜디오 로고 -->
-            <img src="js_master_logo.png" alt="Jismint Studio Symbol" class="studio-logo-svg">
+            <img src="js_master_logo.svg" alt="Jismint Studio" class="studio-logo-svg">
             <span class="logo-text">Jismint Studio</span>
         </a>
+        <div class="lang-switch">
+            <span id="lang-en" class="lang-btn active" onclick="changeLang('en')">EN</span> | 
+            <span id="lang-ko" class="lang-btn" onclick="changeLang('ko')">KO</span>
+        </div>
     </header>
 
     <main>
-        <h1 class="studio-title">Innovating with AI</h1>
-        <p class="studio-subtitle">지스민트 스튜디오는 인공지능 기술을 통해 새로운 가치를 창출합니다.</p>
+        <h1 class="studio-title" id="t-studio-title">Innovating with AI</h1>
+        <p class="studio-subtitle" id="t-studio-subtitle">Empowering the future through Artificial Intelligence technology.</p>
         
         <div class="app-section">
-            <!-- 2. 리비 앱 로고 (PNG 파일 사용) -->
             <img src="libi_logo.png" alt="Libi App Logo" class="app-logo">
-            <h2 class="app-name">리비 (LIBI)</h2>
-            <p class="app-desc">사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.</p>
+            <h2 class="app-name">LIBI</h2>
+            <p class="app-desc" id="t-app-desc">AI-powered fortune telling. A new interpretation of your destiny.</p>
             
             <div class="store-buttons">
-                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/ko-kr?size=250x83" alt="App Store" class="store-badge">
-                <img src="https://play.google.com/intl/en_us/badges/images/generic/ko_badge_web_generic.png" alt="Google Play" class="store-badge">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="App Store" class="store-badge">
+                <img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Google Play" class="store-badge">
             </div>
-            <p style="font-size: 0.8rem; color: #555; margin-top: 15px;">(스토어 출시 준비 중)</p>
+            <p id="t-status" style="font-size: 0.8rem; color: #666; margin-top: 15px;">(Coming soon to Global Stores)</p>
         </div>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-info">
-                <strong>지스민트 스튜디오 (Jismint Studio)</strong>
-                <p>대표: 지윤진 | 사업자등록번호: 168-61-00933</p>
-                <p>통신판매업신고: 제 2026-성남분당B-0303 호</p>
-                <p>주소: 경기도 성남시 분당구 불정로 219, 지스민트 스튜디오</p>
+                <strong>Jismint Studio</strong>
+                <p id="t-footer-ceo">CEO: Yoonjin Ji | Biz License: 168-61-00933</p>
+                <p id="t-footer-mail">E-commerce License: No. 2026-SeongnamBundangB-0303</p>
+                <p id="t-footer-addr">Address: 219, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, South Korea</p>
             </div>
             <div class="footer-links">
-                <a href="https://libi-fortune.notion.site/LIBI-Privacy-Policy-30d74b7c91b180b991b2fba242f02905" target="_blank">개인정보처리방침</a>
-                <a href="https://libi-fortune.notion.site/LIBI-Terms-of-Service-31974b7c91b18049b713c33c76a41562" target="_blank">이용약관</a>
-                <a href="mailto:talk2you.official@gmail.com">문의하기</a>
+                <a href="https://libi-fortune.notion.site/LIBI-Privacy-Policy-30d74b7c91b180b991b2fba242f02905" target="_blank" id="t-link-privacy">Privacy Policy</a>
+                <a href="https://libi-fortune.notion.site/LIBI-Terms-of-Service-31974b7c91b18049b713c33c76a41562" target="_blank" id="t-link-terms">Terms of Service</a>
+                <a href="mailto:talk2you.official@gmail.com" id="t-link-contact">Contact</a>
             </div>
         </div>
         <div class="copyright">&copy; 2026 Jismint Studio. All rights reserved.</div>
     </footer>
 
+    <script>
+        const content = {
+            en: {
+                title: "Innovating with AI",
+                subtitle: "Empowering the future through Artificial Intelligence technology.",
+                appDesc: "AI-powered fortune telling. A new interpretation of your destiny.",
+                status: "(Coming soon to Global Stores)",
+                ceo: "CEO: Yoonjin Ji | Biz License: 168-61-00933",
+                mail: "E-commerce License: No. 2026-SeongnamBundangB-0303",
+                addr: "Address: 219, Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do, South Korea",
+                privacy: "Privacy Policy",
+                terms: "Terms of Service",
+                contact: "Contact"
+            },
+            ko: {
+                title: "Innovating with AI",
+                subtitle: "지스민트 스튜디오는 인공지능 기술을 통해 새로운 가치를 창출합니다.",
+                appDesc: "사주와 AI의 만남, 당신의 운명을 새롭게 해석하는 인공지능 사주 서비스.",
+                status: "(스토어 출시 준비 중)",
+                ceo: "대표: 지윤진 | 사업자등록번호: 168-61-00933",
+                mail: "통신판매업신고: 제 2026-성남분당B-0303 호",
+                addr: "주소: 경기도 성남시 분당구 불정로 219, 지스민트 스튜디오",
+                privacy: "개인정보처리방침",
+                terms: "이용약관",
+                contact: "문의하기"
+            }
+        };
+
+        function changeLang(lang) {
+            // 텍스트 변경
+            document.getElementById('t-studio-subtitle').innerText = content[lang].subtitle;
+            document.getElementById('t-app-desc').innerText = content[lang].appDesc;
+            document.getElementById('t-status').innerText = content[lang].status;
+            document.getElementById('t-footer-ceo').innerText = content[lang].ceo;
+            document.getElementById('t-footer-mail').innerText = content[lang].mail;
+            document.getElementById('t-footer-addr').innerText = content[lang].addr;
+            document.getElementById('t-link-privacy').innerText = content[lang].privacy;
+            document.getElementById('t-link-terms').innerText = content[lang].terms;
+            document.getElementById('t-link-contact').innerText = content[lang].contact;
+
+            // 버튼 스타일 변경
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-ko').classList.toggle('active', lang === 'ko');
+            
+            // HTML lang 속성 변경 (SEO)
+            document.documentElement.lang = lang;
+        }
+    </script>
 </body>
 </html>
