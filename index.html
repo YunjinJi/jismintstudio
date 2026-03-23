@@ -91,30 +91,43 @@
         .app-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .app-desc { font-size: 1.1rem; font-weight: 300; opacity: 0.8; margin-bottom: 2.5rem; }
 
+        /* 1. 컨테이너: 모든 언어에서 동일한 너비와 중앙 정렬 보장 */
         .store-buttons { 
             display: flex; 
             justify-content: center; 
-            gap: 15px; 
+            gap: 15px; /* 배지 사이 간격 고정 */
             margin-top: 2rem;
-            align-items: center;
+            align-items: center; /* 수직 중앙 정렬 */
+            flex-wrap: nowrap; /* 모바일에서도 줄바꿈 방지하여 칼각 유지 */
         }
 
+        /* 2. 절대 상자: 모든 언어 배지를 동일한 크기의 '방'에 가둡니다 */
         .badge-wrapper {
-            width: 160px;  /* 모든 언어 배지가 들어갈 충분한 너비 */
+            width: 155px;  /* 모든 언어 배지가 들어갈 고정 너비 */
             height: 50px;  /* 모든 언어 배지가 들어갈 고정 높이 */
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            overflow: hidden; /* 방을 벗어나면 자름 */
         }
+
+        /* 3. 이미지 공통: 박스 안에서 최대한 크게 (비율 유지) */
         .store-badge { 
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* 비율 깨지지 않게 방 안으로 쏙 넣기 */
+            object-fit: contain; /* 비율 유지하며 쏙 넣기 */
             display: block;
         }
+               
+        /* 앱스토어: 아주 살짝만 줄여서 구글과 균형 맞춤 */
+        #badge-apple {
+            transform: scale(0.95);
+        }
+
+        /* 구글 플레이: 자체 여백이 없으므로, 안쪽에 여백(padding)을 주어 글자를 줄입니다. */
         #badge-google {
-            transform: scale(1.3); /* 구글은 여백이 많으니 억지로 좀 더 키웁니다 */
+            padding: 4px 8px; /* 상하 4px, 좌우 8px 여백으로 글자 크기 축소 보정 */
+            box-sizing: border-box; /* 패딩을 크기에 포함 */
         }
 
         footer {
